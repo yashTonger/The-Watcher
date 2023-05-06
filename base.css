@@ -1,0 +1,59 @@
+body {
+    background: #f5f0e8;
+}   
+
+.eye {
+    position: relative;
+    left: 3vw;
+    bottom: -7.5vw;
+    width: 21vw;
+    height: 20vw;
+    border: 5px solid #a28f70;
+    background: whitesmoke;
+    border-radius: 0px 15vw;
+    transform: rotate(90deg);
+}
+
+
+.eyebrows {
+    position: absolute;
+    left: 24vw;
+    bottom: 40vh;
+    width: 20vw;
+    height: 20vw;
+    border: 0.5vw solid #674f04;
+    border-radius: 30vw 5vw;
+    border-bottom: transparent;
+    background: #a28f70;
+    transform: rotate(54deg);
+    z-index: -2;
+
+}
+.eyebrows::after {
+    content: "";
+    border: 10px solid #674f04;
+    width: 21vw;
+    height: 16vw;
+    z-index: -1;
+    border-radius: 435px 9px 0px 0px;
+    position: absolute;
+    left: -1vw;
+    bottom: 0vw;
+    background: #f5f0e8;
+    border-bottom: #f5f0e8;
+    border-right: #f5f0e8;
+}
+
+.right {
+    left: 58vw;
+    transform: rotate(306deg) rotateY(178deg);;
+}
+
+/* 
+.iris {
+
+}
+
+.shine {
+    
+} */
