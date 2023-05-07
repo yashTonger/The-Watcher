@@ -49,11 +49,26 @@ body {
     transform: rotate(306deg) rotateY(178deg);;
 }
 
-/* 
-.iris {
-
+.innerEye {
+    width:7vw;
+    height: 7vw;
+    border-radius: 50%;
+    background-image: radial-gradient( black 20%, blue 60%);
+    position: relative;
+    left: 0vw;
+    top: 0vw;
 }
-
+ 
 .shine {
-    
-} */
+    width: 4vw;
+    height: 4vw;
+    border-radius: 50%;
+    background-image: radial-gradient( white 20%, transparent 60%);
+    position: relative;
+    left: 0vw;
+    top: 2vw;
+} 
+.shineRight {
+    left: 1.5vw;
+    top: 3vw;
+}
