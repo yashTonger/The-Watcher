@@ -1,3 +1,12 @@
+:root {
+    --leftEyePositionLeft: 2;
+    --leftEyePositionTop: 2;
+    --rightEyePositionHelperX: calc((24 - var(--leftEyePositionLeft) - var(--leftEyePositionTop))/1.414);
+    --rightEyePositionHelperY: calc((var(--leftEyePositionLeft) - var(--leftEyePositionTop))/1.414);
+    --rightEyePositionLeft: calc((var(--rightEyePositionHelperX) + var(--rightEyePositionHelperY))/1.414);
+    --rightEyePositionTop: calc((var(--rightEyePositionHelperX) - var(--rightEyePositionHelperY))/1.414);
+}
+
 body {
     background: #f5f0e8;
 }   
@@ -8,10 +17,12 @@ body {
     bottom: -7.5vw;
     width: 21vw;
     height: 20vw;
-    border: 5px solid #a28f70;
-    background: whitesmoke;
+    border: 5px solid hsl(37, 21%, 54%);
+    
+    background-image: radial-gradient( whitesmoke 90%, red);
     border-radius: 0px 15vw;
     transform: rotate(90deg);
+    overflow: hidden;
 }
 
 
@@ -46,7 +57,7 @@ body {
 
 .right {
     left: 58vw;
-    transform: rotate(306deg) rotateY(178deg);;
+    transform: rotate(306deg) rotateY(178deg);
 }
 
 .innerEye {
@@ -55,8 +66,15 @@ body {
     border-radius: 50%;
     background-image: radial-gradient( black 20%, blue 60%);
     position: relative;
-    left: 0vw;
-    top: 0vw;
+    left: calc(var(--leftEyePositionLeft) * 1vw);
+    top: calc(var(--leftEyePositionTop) * 1vw);
+
+    /* 2 to 12 range in both left and top */
+}
+
+.innerEye.right {
+    left: calc(var(--rightEyePositionLeft) * 1vw);
+    top: calc(var(--rightEyePositionTop) * 1vw);
 }
  
 .shine {
@@ -68,7 +86,8 @@ body {
     left: 0vw;
     top: 2vw;
 } 
-.shineRight {
-    left: 1.5vw;
-    top: 3vw;
+.shine.right {
+    left: 3vw;
+    top: 2.5vw;
 }
+
