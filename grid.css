@@ -1,0 +1,18 @@
+.grid {
+    display: grid;
+    grid-template-columns: repeat(30, 1fr);
+    grid-template-rows: repeat(30, 3.334vh);
+    
+    height: 100vh;
+    width: 100vw;
+}
+ 
+.cell {
+    border: 1px solid red;
+    background: transparent;
+  z-index: 10;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
