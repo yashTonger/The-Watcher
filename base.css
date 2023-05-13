@@ -10,6 +10,7 @@
 body {
     background: #f5f0e8;
     margin: 0px;
+    display: block;
 }   
 
 .eye {
@@ -24,13 +25,37 @@ body {
     border-radius: 0px 15vw;
     transform: rotate(90deg);
     overflow: hidden;
+    z-index: 4;
+    
+   
+/* change the transition in short form */
+}
+.eyelid {
+    position: absolute;
+    left: -11vw;
+    bottom: -9vw;
+    width: 21vw;
+    height: 20vw;
+    border: 5px solid hsl(37, 21%, 54%);
+    background-color: #f5f0e8;
+    border-radius: 0px 15vw;
+    transform: rotate(0deg);
+    transition-property: all;
+    transition-duration: 0.8s;
+    transition-delay: 0.05s;
+    transition-timing-function: ease-out;
 }
 
+.eyelid.closed {
+    left: -1vw;
+    bottom: -1vw;
+}
 
 .eyebrows {
+    
     position: absolute;
     left: 24vw;
-    bottom: 40vh;
+    bottom: 45vh;
     width: 20vw;
     height: 20vw;
     border: 0.5vw solid #674f04;
@@ -38,7 +63,7 @@ body {
     border-bottom: transparent;
     background: #a28f70;
     transform: rotate(54deg);
-    z-index: -2;
+    z-index: 2;
 
 }
 .eyebrows::after {
@@ -46,7 +71,7 @@ body {
     border: 10px solid #674f04;
     width: 21vw;
     height: 16vw;
-    z-index: -1;
+    z-index: 3;
     border-radius: 435px 9px 0px 0px;
     position: absolute;
     left: -1vw;
@@ -70,7 +95,6 @@ body {
     left: calc(var(--leftEyePositionLeft) * 1vw);
     top: calc(var(--leftEyePositionTop) * 1vw);
 
-    /* 2 to 12 range in both left and top */
 }
 
 .innerEye.right {
