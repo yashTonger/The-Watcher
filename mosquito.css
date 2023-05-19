@@ -1,12 +1,13 @@
-
 .mosquito {
     position: absolute;
-    left: 1px;
-    top: 1px;
     width: 7vw;
     height: 10vw;
     object-fit: contain;
+    z-index: 100;
+    transform: translate(-50%,-50%) rotateY(0deg);
+    pointer-events: none;
 }
+
 
 .fly {
     animation-name: fly;
@@ -17,15 +18,15 @@
 
 @keyframes fly {
     0% {
-       transform: rotateY(0deg);
+       transform: translate(-50%,-50%) rotateY(0deg);
     }
 
     50% {
-        transform: rotateY(40deg);
+        transform: translate(-50%,-50%) rotateY(40deg);
     }
 
     100% {
-        transform: rotateY(0deg);
+        transform: translate(-50%,-50%) rotateY(0deg);
     }
 
 }
