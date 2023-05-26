@@ -2,19 +2,45 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>The Watcher</title>
+  <title>Let me sleep</title>
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <meta name="description" content="" />
   <link rel="icon" href="img_352480.png">
   <link rel="stylesheet" href="base.css">
   <link rel="stylesheet" href="grid.css">
+  <link rel="stylesheet" href="mosquito.css">
+  <link rel="stylesheet" href="buttons.css">
 </head>
 <body>
     
   <div id="grid" class="grid"></div>
+
+
+  <div id="test" class="button">
+
+    <div id="outer-ring" class="ci c">
+        <div class="ci a">
+          <div class="ci b">
+          </div>
+        </div>
+      </div>
+      <div class="t"></div>
+      <div class="bo"></div>
+
+    </div>
+
+    <div class="button replay-container">
+        <div class="replay-circle">
+          <div class="replay-circle-inner"></div>
+          <div class="tri"></div>
+        </div>
+    </div>
+
+
+  <img id="mosquito1" class="mosquito" src="Mosquito-Download-PNG.png">
   <div class="eyebrows">
     <div id="leftEye" class="eye">
-        <div class="innerEye">
+        <div id="leftEyeBall" class="innerEye">
             <div class="shine"></div>
         </div>
         <div id="leftEyeLid" class="eyelid"></div>
@@ -22,14 +48,19 @@
   </div>
   <div class="right eyebrows">
     <div id="rightEye" class="eye">
-        <div class="innerEye right">
+        <div id="rightEyeBall" class="innerEye">
             <div class="shine right"></div>
         </div>
         <div id="rightEyeLid" class="eyelid"></div>
     </div>
   </div>
 
- 
-  <script src="EyeMotion.js"></script>
+  
+  <audio id="back-audio" loop>
+    <source src="background-sound.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
+  <div id="light-filter"></div>
+  <script src="main.js"></script>
 </body>
 </html>
