@@ -1,17 +1,27 @@
-:root {
-    --leftEyePositionLeft: 2;
-    --leftEyePositionTop: 2;
-    --rightEyePositionHelperX: calc((24 - var(--leftEyePositionLeft) - var(--leftEyePositionTop))/1.414);
-    --rightEyePositionHelperY: calc((var(--leftEyePositionLeft) - var(--leftEyePositionTop))/1.414);
-    --rightEyePositionLeft: calc((var(--rightEyePositionHelperX) + var(--rightEyePositionHelperY))/1.414);
-    --rightEyePositionTop: calc((var(--rightEyePositionHelperX) - var(--rightEyePositionHelperY))/1.414);
-}
 
 body {
     background: #f5f0e8;
     margin: 0px;
     display: block;
+    overflow: hidden;
 }   
+
+.disable {
+    pointer-events: none;
+}
+
+#light-filter{
+
+        position:fixed;
+        z-index: 100;
+        top:0; 
+        left:0;
+        bottom:0; 
+        right:0;
+        background-color:rgba(0,0,0,0.2);
+        pointer-events: none;   
+    
+}
 
 .eye {
     position: relative;
@@ -28,7 +38,7 @@ body {
     z-index: 4;
     
    
-/* change the transition in short form */
+
 }
 .eyelid {
     position: absolute;
@@ -40,10 +50,7 @@ body {
     background-color: #f5f0e8;
     border-radius: 0px 15vw;
     transform: rotate(0deg);
-    transition-property: all;
-    transition-duration: 0.8s;
-    transition-delay: 0.05s;
-    transition-timing-function: ease-out;
+    transition: all 0.8s ease-out 0.05s;
 }
 
 .eyelid.closed {
@@ -92,16 +99,9 @@ body {
     border-radius: 50%;
     background-image: radial-gradient( black 20%, blue 60%);
     position: relative;
-    left: calc(var(--leftEyePositionLeft) * 1vw);
-    top: calc(var(--leftEyePositionTop) * 1vw);
-
+    transition: all 0.5s ease-out;
 }
 
-.innerEye.right {
-    left: calc(var(--rightEyePositionLeft) * 1vw);
-    top: calc(var(--rightEyePositionTop) * 1vw);
-}
- 
 .shine {
     width: 4vw;
     height: 4vw;
@@ -112,6 +112,6 @@ body {
     top: 2vw;
 } 
 .shine.right {
-    left: 3vw;
-    top: 2.5vw;
+    left: 1.5vw;
+    top: 3vw;
 }
