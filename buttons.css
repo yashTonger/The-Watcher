@@ -122,3 +122,11 @@
     top:50%;
     transform: translate(-50%,-50%) rotate(0deg)
   }
+  .b1{
+    position: absolute;
+    bottom: 5px;
+    height: 30px;
+    width: 40px;
+    background-color: red;
+    border: 1px solid silver;
+  }
