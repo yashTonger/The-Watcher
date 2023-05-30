@@ -22,12 +22,12 @@
     }
 
 
-
 //functions ============>
 
 
     //bitting
     function bit(currentCell) {
+        console.log("bit");
         if(isSpacePressed && !isPause && isStarted && !isEnd)
         {
             if(isLight){
@@ -259,6 +259,7 @@
     //end
     function end(result) {
         //is satrted - false 
+        console.log(result);
     }
     
     // win
@@ -312,7 +313,9 @@
 
     allCellsArray.forEach( function(currentCell, index ) {
         
-        currentCell.addEventListener('click', bit(currentCell));
+        currentCell.addEventListener('click', ()=>{
+            bit(currentCell);
+        });
     });
 
     //eye
@@ -323,7 +326,7 @@
 
     //pause button
 
-    document.getElementById("Pause").addEventListener('click',pause);
+    document.getElementById("pause").addEventListener('click',pause);
 
     //unpause button
 
@@ -342,6 +345,8 @@
     document.addEventListener('keydown',stopMonment);
     document.addEventListener('keyup', startMonment);
     //mouse position
+
+    document.documentElement.addEventListener('mousemove', mosquitoMotion);
 
     document.documentElement.addEventListener('mousemove', mosquitoMotion);
 
