@@ -6,6 +6,7 @@
     var isSpacePressed= false;
     var isEyeClosed =false;
     var ismute= false;
+    var isBiting= -1;
 
     var Totalrows= 30;
     var Totalcolumn= 30;
@@ -24,30 +25,40 @@
 
 //functions ============>
 
+    //stop bitting
+    function bitStop(){
+        isBiting =-1;
+        startMonment();
+    }
 
     //bitting
-    function bit(currentCell) {
+    function bit(currentCell,index) {
         console.log("bit");
-        if(isSpacePressed && !isPause && isStarted && !isEnd)
+        if(!isSpacePressed && !isPause && isStarted && !isEnd)
         {
+            stopMonment();
+            
             if(isLight){
                 kill();
             }
-            else{
-                if( !currentCell.classList.contains('marked')){
-                    blood++;
-                    
-                    currentCell.classList.add('marked') ;
-                    if(blood==5||blood==9||blood==13||blood==18||blood==21||blood==25||blood==29)
-                    {
-                        lightOn();
-                    }
-                    else {
-                        if(blood==30){
-                            win();
+            else{ 
+                setTimeout(()=>{
+                    if( !currentCell.classList.contains('marked') && isBiting==index){
+                        blood++;
+                        
+                        currentCell.classList.add('marked') ;
+                        if(blood==5||blood==9||blood==13||blood==18||blood==21||blood==25||blood==29)
+                        {
+                            lightOn();
+                        }
+                        else {
+                            if(blood==30){
+                                win();
+                            }
                         }
                     }
-                }
+                },4000);
+                isBiting=index;
             }
         }
 
@@ -313,8 +324,12 @@
 
     allCellsArray.forEach( function(currentCell, index ) {
         
-        currentCell.addEventListener('click', ()=>{
-            bit(currentCell);
+        currentCell.addEventListener('mousedown', ()=>{
+            bit(currentCell,index);
+        });
+
+        currentCell.addEventListener('mouseup', ()=>{
+            bitStop();
         });
     });
 
@@ -347,6 +362,3 @@
     //mouse position
 
     document.documentElement.addEventListener('mousemove', mosquitoMotion);
-
-    document.documentElement.addEventListener('mousemove', mosquitoMotion);
-
