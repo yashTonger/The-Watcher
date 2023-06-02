@@ -1,0 +1,21 @@
+.bar {
+    position: absolute;
+    left: 1vw;
+    top: 1vw;
+    width: 20%;
+    height: 5%;
+    background: #000;
+    border-radius: 0 0 40% 0;
+    overflow: hidden;
+    border:4px solid green;
+    z-index: 200;
+    box-shadow: 2px 20px 20px 2px #00000061;
+  }
+  .blood {
+    background-image: linear-gradient(#834747 16%, #d51a1a 70%, black 100%);
+    height:100%;
+    width: 90%;
+    border-radius: 0 0% 20% 0;
+    transition: all 0.5s ease-in 0.05s;
+    
+  }
