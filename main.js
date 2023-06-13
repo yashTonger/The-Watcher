@@ -23,6 +23,26 @@
     }
 
 
+
+// audio
+// var isPlaying = false;
+// document.getElementById("test").addEventListener("click",() => 
+//     {
+//         if(!isPlaying){
+//             document.getElementById("back-audio").play();
+//             document.getElementById("outer-ring").classList.add("unmuted");
+//             isPlaying= true;
+//         }
+//         else{
+//             document.getElementById("back-audio").pause();
+//             document.getElementById("outer-ring").classList.remove("unmuted");
+//             isPlaying=false;
+//         }
+//     }
+// );
+
+
+
 //functions ============>
 
     //stop bitting
@@ -45,6 +65,7 @@
                 setTimeout(()=>{
                     if( !currentCell.classList.contains('marked') && isBiting==index){
                         blood++;
+                        scoreUpdate();
                         
                         currentCell.classList.add('marked') ;
                         if(blood==5||blood==9||blood==13||blood==18||blood==21||blood==25||blood==29)
@@ -62,6 +83,13 @@
             }
         }
 
+    }
+
+    //updaate blood bar 
+    function scoreUpdate(){
+        var score= blood*3.333334;
+
+        document.getElementById("score").style.width = ""+score+"%";
     }
 
     //light On
@@ -224,6 +252,7 @@
 
         document.getElementById('dashboard').style.visibility="hidden";
         console.log("play-sounds");
+        scoreUpdate();
         lightOff();
 
         //buttons config
