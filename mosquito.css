@@ -30,3 +30,45 @@
     }
 
 }
+
+.flyAway {
+    animation-name: fly,flyAway;
+    animation-duration: 0.05s,2s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite,1;
+    animation-fill-mode: none,forwards;
+}
+
+@keyframes flyAway {
+ 
+
+    100% {
+        width: 70vw;
+        height: 100vw;
+        opacity: 0;
+    }
+
+}
+
+.flyBack {
+    animation-name: fly,flyBack;
+    animation-duration: 0.05s,2s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite,1;
+    animation-fill-mode: none,backwards;
+}
+
+@keyframes flyBack {
+    100% {
+        width: 7vw;
+        height: 10vw;
+        opacity: 1;
+    }
+
+    0% {
+        width: 70vw;
+        height: 100vw;
+        opacity: 0;
+    }
+
+}
