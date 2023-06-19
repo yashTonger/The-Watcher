@@ -8,6 +8,7 @@ body {
 
 .disable {
     pointer-events: none;
+    visibility: hidden;
 }
 
 #light-filter{
@@ -54,8 +55,8 @@ body {
 }
 
 .eyelid.closed {
-    left: -1vw;
-    bottom: -1vw;
+    left: 0vw;
+    bottom: 0vw;
 }
 
 .eyebrows {
@@ -114,4 +115,11 @@ body {
 .shine.right {
     left: 1.5vw;
     top: 3vw;
+}
+
+.win{
+    position: absolute;
+    left: 50%;
+    top: 0%;
+    transform: translateX(-50%);
 }
