@@ -32,6 +32,14 @@
         }
     }
 
+//Loading all asset
+    window.onload = (event)=>{
+        setTimeout(()=>{
+            show('go');
+            hide('loading')
+            document.getElementById("light-filter").style.background = "rgba(0,0,0,0.2)";
+        },3000);
+    };
 
 
 //functions ============>
