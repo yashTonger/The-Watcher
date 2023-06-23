@@ -68,13 +68,11 @@
   width: 80%;
   transform: translate(-50%,-50%);
   background: rgb(0, 0, 0);
-  
   transition: all 0.2s ease-in;
   border-radius: 8%;
   border:7px ridge green;
-    z-index: 10;
-    font-family: 'Press Start 2P', cursive;
-    overflow: hidden;
+  z-index: 10;
+  overflow: hidden;
   }
 
 
@@ -87,3 +85,4 @@
     box-shadow: inset 1px 1px 20px 90px #00000052;
     transform: translateX(-50%);
   }
+

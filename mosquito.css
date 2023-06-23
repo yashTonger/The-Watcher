@@ -40,7 +40,11 @@
 }
 
 @keyframes flyAway {
- 
+    /* 0% {
+        width: 7vw;
+        height: 10vw;
+        opacity: 1;
+    } */
 
     100% {
         width: 70vw;

@@ -4,6 +4,7 @@ body {
     margin: 0px;
     display: block;
     overflow: hidden;
+    font-family: 'Press Start 2P', cursive;
 }   
 
 .disable {
@@ -31,6 +32,7 @@ body {
     z-index: 101;
     color: white;
 }
+
 .eye {
     position: relative;
     left: 3vw;
@@ -123,6 +125,18 @@ body {
     left: 1.5vw;
     top: 3vw;
 }
+
+/* to do
+eye red when click
+follow the eye 
+close eye on click 
+add sounds
+wash with water
+moqito and medicine on mouse
+add bottom t
+drop shadow mosquto and shadows all things
+o  go crazy or angary cry */
+
 
 .win{
     position: absolute;

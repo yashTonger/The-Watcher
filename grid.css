@@ -15,10 +15,7 @@
   background-image: radial-gradient(red 8%,transparent 50%);
   opacity: 0;
   overflow: hidden;
-  transition-property: all;
-  transition-delay: 0.3s;
-  transition-duration: 1s;
-  transition-timing-function: ease-in;
+  transition: all 0.6s ease-in 0.2s;
 }
 
 .cell.marked {
