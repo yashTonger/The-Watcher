@@ -15,14 +15,13 @@
     var blood = 0;  
 
     var mosquito =  document.getElementById("mosquito1");
-    var Rules = " <h1>Welcome to the Game!</h1>"+
-    "<p>Follow the instructions below to play:</p>"+
-    "<ol>"+
-      "<li>Step 1: Choose a difficulty level</li>"+
-      "<li>Step 2: Click the 'Start' button to begin</li>"+
-      "<li>Step 3: Play the game using the arrow keys</li>"+
-      "<li>Step 4: Have fun and aim for the high score!</li> "+
-    "</ol>";
+    var Rules = "<p>Follow the instructions below to play:</p>"+
+                        "<ol>"+
+                        "<li>Hold click to bit</li>"+
+                        "<li>Hold space to hide when eyes open</li>"+
+                        "<li>Hide and suck </li>"+
+                        "<li>GOOD LUCK ;)</li> "+
+                        "</ol>";
 
 //adding grid
     for(let r = 1;r<=Totalrows;r++) {
@@ -42,12 +41,17 @@
     };
 
 
+
+
+
+
 //functions ============>
 
     //stop bitting
     function bitStop(){
         isBiting =-1;
-        startMonment();
+        startMovement();
+        stopSound("suck-audio");
     }
 
     //bitting
@@ -55,7 +59,8 @@
         console.log("bit");
         if(!isMotionStoped && !isPause && isStarted && !isEnd && !isFlownAway)
         {
-            stopMonment();
+            stopMovement();
+            playSound("suck-audio",0.1);
             
             if(isLight){
                 kill();
@@ -95,6 +100,8 @@
     function lightOn() {
         if( !isPause && isStarted && !isEnd && !isLight)
         {
+            playSound("button-audio",0.6);
+            stopSound("back-audio");
             isLight=true;
             openEye();
             document.getElementById("light-filter").style.background = "rgba(0,0,0,0)";
@@ -114,7 +121,11 @@
     //light Off
     function lightOff() {
         if(isStarted && !isEnd){
+
+            playSound("button-audio",0.6);
+            playSound("back-audio",0.8);
             isLight=false;
+
             closeEye();
             document.getElementById("light-filter").style.background = "rgba(0,0,0,0.2)";
         }
@@ -123,9 +134,11 @@
     
 
     // stop mosqito animation
-    function stopMonment() {
+    function stopMovement() {
         if(isStarted && !isPause && !isMotionStoped){
             isMotionStoped=true;
+            stopSound("buzz-audio");
+
             mosquito.classList.remove("fly");
             if(!ismute){
                 //pasue mosquito sound
@@ -137,9 +150,11 @@
 
 
      // start mosqito animation
-     function startMonment() {
+     function startMovement() {
         if(isStarted && !isPause && isMotionStoped){
             isMotionStoped=false;
+            playSound("buzz-audio",1);
+
             mosquito.classList.add("fly");
             if(!ismute){
                 //play mosquito sound
@@ -153,9 +168,7 @@
             isFlownAway=true;
             mosquito.classList.remove("flyBack");
             mosquito.classList.add("flyAway");
-            if(!ismute){
-                //pasue mosquito sound
-            }
+           stopSound("buzz-audio");
         }
 
     }
@@ -167,9 +180,7 @@
             isFlownAway=false;
             mosquito.classList.remove("flyAway");
             mosquito.classList.add("flyBack");
-            if(!ismute){
-                //play mosquito sound
-            }
+            playSound("buzz-audio",1);
         }
     }
 
@@ -189,10 +200,13 @@
 
             mosquito.style.left= e.clientX   + "px";
             mosquito.style.top= e.clientY +1 + "px";
+
+            if(!isEyeClosed){
             document.getElementById("leftEyeBall").style.left= eyeBallLeft + 2 + "vw";
             document.getElementById("leftEyeBall").style.top= eyeBalltop + 2 + "vw";
             document.getElementById("rightEyeBall").style.left= rightEyeBallLeft  + 2  + "vw";
             document.getElementById("rightEyeBall").style.top= rightEyeBallTop  + 2 + "vw";
+            }
         }
     }
 
@@ -223,6 +237,10 @@
         if(isStarted && !isPause && !isEnd ){
 
             isPause=true;
+
+            playSound("button-audio",0.6);
+            stopSound("back-audio");
+            stopSound("buzz-audio");
         
             show('dashboard');
             show('replay');
@@ -241,6 +259,15 @@
         if(isStarted && isPause && !isEnd ){
             
             isPause=false;
+
+            playSound("button-audio",0.6);
+            if(!isLight){
+                playSound("back-audio",0.8);
+            }
+            if(!isFlownAway){
+                playSound("buzz-audio",1);
+            }
+
             hide('dashboard');
             hide('replay');
             hide('mute');
@@ -254,6 +281,9 @@
     //replay
     function replay() {
         if(isStarted && isPause &&!isEnd){
+            
+            playSound("button-audio",0.6);
+
             unpause();
             start();
         }
@@ -267,7 +297,6 @@
         //setting flags
         isStarted=true;
         isPause=false;
-        ismute=false;
         isEnd=false;
         isMotionStoped=false;
         blood=0;
@@ -277,6 +306,10 @@
         console.log("play-sounds");
         scoreUpdate();
         lightOff();
+
+        playSound("button-audio",0.6);
+        stopSound("win-audio"),0.8;
+        stopSound("lose-audio",0.8);
 
         //buttons config
         hide('dashboard');
@@ -294,8 +327,6 @@
 
         document.getElementById('content').innerHTML= Rules;
     
-
-
 
         //remove old marks
         for(let r = 1;r<=Totalrows;r++) {
@@ -324,8 +355,9 @@
     function win(){
         if(isStarted && !isPause && !isLight && !isEnd){
 
-            stopMonment();
+            stopMovement();
             isEnd=true;
+            stopSound("back-audio");
 
 
             hide('score-bar');
@@ -336,6 +368,7 @@
             show('winPic');
             setTimeout(()=>{
                 end("MISSION PASSED");
+                playSound("win-audio",0.8);
             },2000);
         }
     }
@@ -344,9 +377,11 @@
     function kill() {
         if(isStarted && !isPause && isLight && !isEnd){
 
-            stopMonment();
+            stopMovement();
             isEnd=true;
             
+            playSound("hey-audio",0.5);
+
             hide('score-bar');
             hide('pause');
             hide("mosquito1");
@@ -355,12 +390,16 @@
             show('failPic');
             setTimeout(()=>{
                 end("MISSION FAILED");
-            },2000);
+                playSound("lose-audio",0.5);
+                        },2000);
         }
     }
 
     //mute
     function mute() {
+
+        playSound("button-audio",0.6);
+
         if(ismute){
             console.log("un-mute");
             ismute=false;
@@ -388,6 +427,21 @@
         document.getElementById(element).style.visibility="hidden";
     }
 
+    //mute sound
+    function stopSound(element) {
+        document.getElementById(element).pause();
+    }
+
+    //play sound
+    function playSound(element,vol) {
+        if(!ismute){
+            document.getElementById(element).volume = vol;
+            document.getElementById(element).play();
+        }
+    }
+
+
+//////////////////////////////////////////////////////////////////
 
 //eventLisnteners
 
@@ -438,6 +492,14 @@
         if (event.code === 'Space') {
           flyAway();
         }
+        else if(event.code === 'Escape'){
+            if(isPause){
+                unpause();
+            }
+            else{
+                pause();
+            }
+        }
       });
       
       document.addEventListener('keyup', function(event) {
@@ -449,8 +511,6 @@
     //mouse position
 
     document.documentElement.addEventListener('mousemove', mosquitoMotion);
-
-
 
     //removing animation
 
