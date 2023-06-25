@@ -34,9 +34,8 @@
 //Loading all asset
     window.onload = (event)=>{
         setTimeout(()=>{
-            show('go');
-            hide('loading')
-            document.getElementById("light-filter").style.background = "rgba(0,0,0,0.2)";
+            document.getElementById("loading").innerHTML="Click to continue...";
+            document.addEventListener('click',startMenu)
         },3000);
     };
 
@@ -46,6 +45,15 @@
 
 
 //functions ============>
+
+    //start menu function
+    function startMenu(){
+        show('go');
+                hide('loading');
+                document.getElementById("light-filter").style.background = "rgba(0,0,0,0.2)";
+                playSound("menu-audio",0.3);
+                document.removeEventListener('click',startMenu);
+    }
 
     //stop bitting
     function bitStop(){
@@ -239,6 +247,7 @@
             isPause=true;
 
             playSound("button-audio",0.6);
+            playSound("menu-audio",0.3);
             stopSound("back-audio");
             stopSound("buzz-audio");
         
@@ -261,6 +270,7 @@
             isPause=false;
 
             playSound("button-audio",0.6);
+            stopSound("menu-audio");
             if(!isLight){
                 playSound("back-audio",0.8);
             }
@@ -303,13 +313,14 @@
 
 
         document.getElementById('dashboard').style.visibility="hidden";
-        console.log("play-sounds");
+        
         scoreUpdate();
         lightOff();
 
         playSound("button-audio",0.6);
-        stopSound("win-audio"),0.8;
-        stopSound("lose-audio",0.8);
+        stopSound("win-audio");
+        stopSound("lose-audio");
+        stopSound("menu-audio");
 
         //buttons config
         hide('dashboard');
@@ -380,7 +391,7 @@
             stopMovement();
             isEnd=true;
             
-            playSound("hey-audio",0.5);
+            playSound("hey-audio",0.3);
 
             hide('score-bar');
             hide('pause');
@@ -402,11 +413,13 @@
 
         if(ismute){
             console.log("un-mute");
+            playSound("menu-audio",0.3);
             ismute=false;
             
         }
         else {
             console.log("mute");
+            stopSound("menu-audio");
             ismute=true;
            
         }
@@ -421,10 +434,10 @@
 
     //hide and disable the element
     function hide(element) {
+        document.getElementById(element).style.visibility="hidden";
         if(!document.getElementById(element).classList.contains('disable')){
             document.getElementById(element).classList.add('disable');
         }
-        document.getElementById(element).style.visibility="hidden";
     }
 
     //mute sound
